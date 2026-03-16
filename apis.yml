@@ -1,34 +1,49 @@
 aid: hello-retail
 name: Hello Retail
 description: >-
-  Hello Retail provides a REST API that allows using the features and tracking
-  programatically. The helloretail.js script provides an SDK that is an
-  easy-to-use way of using the API from javascript directly on the website. 
+  Hello Retail is a personalization and product recommendation platform for
+  e-commerce. It provides a REST API and JavaScript SDK for integrating
+  personalized product recommendations, search, and behavioral tracking into
+  retail websites.
 type: Index
-position: Consumer
-access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
-created: '2025-02-06'
-modified: '2025-02-06'
+  - E-Commerce
+  - Personalization
+  - Product Recommendations
+  - Retail
 url: >-
   https://raw.githubusercontent.com/api-evangelist/hello-retail/refs/heads/main/apis.yml
+created: '2025-02-06'
+modified: '2026-03-16'
 specificationVersion: '0.19'
 apis:
-  - aid: hello-retail:hello-retail
-    name: Hello Retail
+  - aid: hello-retail:hello-retail-api
+    name: Hello Retail API
     description: >-
-      Hello Retail provides a REST API that allows using the features and
-      tracking programatically. The helloretail.js script provides an SDK that
-      is an easy-to-use way of using the API from javascript directly on the
-      website. 
-    humanURL: ' https://developer.helloretail.com/sdk/'
+      Hello Retail provides a REST API that allows using the personalization
+      features and tracking programmatically. The helloretail.js script
+      provides an SDK that is an easy-to-use way of using the API from
+      JavaScript directly on the website.
+    humanURL: https://developer.helloretail.com/sdk/
     tags:
-      - API
+      - E-Commerce
+      - Personalization
+      - REST
     properties:
       - type: Documentation
-        url: ' https://developer.helloretail.com/sdk/'
+        url: https://developer.helloretail.com/sdk/
+      - type: Getting Started
+        url: https://developer.helloretail.com/getting-started/
+      - type: Authentication
+        url: https://developer.helloretail.com/authentication/
+common:
+  - type: Portal
+    url: https://developer.helloretail.com/
+  - type: Website
+    url: https://www.helloretail.com/
+  - type: Sign Up
+    url: https://app.helloretail.com/signup
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com

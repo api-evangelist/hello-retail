@@ -1,0 +1,533 @@
+openapi: 3.1.0
+info:
+  title: Hello Retail API
+  description: >-
+    Hello Retail provides REST APIs for personalized product recommendations,
+    on-site search, page-driven product listings, and customer bias retrieval.
+    Endpoints are served from the core.helloretail.com host and accept JSON
+    request bodies. Most endpoints expect a Bearer token issued from the
+    My Hello Retail dashboard. The API powers e-commerce personalization use
+    cases including product discovery, behavioral tracking, and merchandising.
+  version: '1.0'
+  contact:
+    name: Hello Retail
+    url: https://developer.helloretail.com/
+  license:
+    name: Proprietary
+    url: https://www.helloretail.com/terms
+externalDocs:
+  description: Hello Retail Developer Documentation
+  url: https://developer.helloretail.com/
+servers:
+  - url: https://core.helloretail.com
+    description: Hello Retail core serving host
+tags:
+  - name: Recommendations
+    description: Managed and unmanaged product recommendation requests.
+  - name: Search
+    description: On-site search across products, categories, brands, and content.
+  - name: Pages
+    description: Page-driven product listings with filtering and sorting.
+  - name: Customer Bias
+    description: Retrieve weighted customer preference data for personalization.
+paths:
+  /serve/recoms:
+    post:
+      operationId: getRecommendations
+      summary: Request product recommendations
+      description: >-
+        Returns one or more recommendation result sets, supporting both
+        managed (pre-configured) and unmanaged (custom) recommendation
+        requests. A single user identifier (trackingUserId, email, or
+        customerId) may accompany the request to enable personalization.
+      tags:
+        - Recommendations
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecomRequest'
+      responses:
+        '200':
+          description: Recommendation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecomResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /serve/search:
+    post:
+      operationId: search
+      summary: Run a search query
+      description: >-
+        Performs a search against a configured search key and returns matching
+        products and optionally categories, brands, blog posts, site pages,
+        and redirects. Supports pagination, filtering, sorting, and faceting.
+      tags:
+        - Search
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /serve/pages/{key}:
+    post:
+      operationId: loadPage
+      summary: Load a configured page
+      description: >-
+        Returns the product listing rendered by the page configuration
+        identified by key. Supports filters, sorting, pagination, and a
+        first-load flag for analytics view tracking.
+      tags:
+        - Pages
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: Page configuration key from My Hello Retail.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageRequest'
+      responses:
+        '200':
+          description: Page results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Page not found
+  /serve/customer/bias:
+    post:
+      operationId: getCustomerBias
+      summary: Retrieve customer bias data
+      description: >-
+        Returns weighted preference values for the requested fields for a
+        given customer identifier. Used to drive personalization based on
+        observed behavior.
+      tags:
+        - Customer Bias
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBiasRequest'
+      responses:
+        '200':
+          description: Customer bias values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerBiasResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+  schemas:
+    RecomRequest:
+      type: object
+      required:
+        - requests
+      properties:
+        websiteUuid:
+          type: string
+          description: Identifies the website in Hello Retail.
+        trackingUserId:
+          type: string
+          description: Hello Retail-generated tracking user ID.
+        email:
+          type: string
+          format: email
+        customerId:
+          type: string
+        includeRetailMediaInReview:
+          type: boolean
+        requests:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/ManagedRecomRequest'
+              - $ref: '#/components/schemas/UnmanagedRecomRequest'
+    ManagedRecomRequest:
+      type: object
+      required:
+        - key
+        - format
+      properties:
+        key:
+          type: string
+          description: Recom box identifier configured in My Hello Retail.
+        format:
+          type: string
+          enum: [html, json]
+        fields:
+          type: array
+          items:
+            type: string
+        context:
+          type: object
+          additionalProperties: true
+        deviceType:
+          type: string
+          enum: [DESKTOP, MOBILE]
+    UnmanagedRecomRequest:
+      type: object
+      required:
+        - trackingKey
+        - count
+        - sources
+      properties:
+        trackingKey:
+          type: string
+          pattern: '^[0-9a-zA-Z-]{1,100}$'
+        count:
+          type: integer
+          minimum: 1
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductSource'
+        fields:
+          type: array
+          items:
+            type: string
+        hideAdditionalVariants:
+          type: boolean
+          default: true
+        context:
+          type: object
+          additionalProperties: true
+    ProductSource:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - TOP
+            - MOST_BOUGHT
+            - MOST_VIEWED
+            - ALTERNATIVES
+            - BOUGHT_TOGETHER
+            - RETARGETED
+            - RECENTLY_BOUGHT
+        context:
+          type: object
+          additionalProperties: true
+    RecomResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              trackingKey:
+                type: string
+              success:
+                type: boolean
+              products:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              html:
+                type: string
+              code:
+                type: string
+              message:
+                type: string
+    SearchRequest:
+      type: object
+      required:
+        - query
+        - key
+      properties:
+        query:
+          type: string
+        key:
+          type: string
+        id:
+          type: integer
+        trackingUserId:
+          type: string
+        format:
+          type: string
+          enum: [json, html]
+          default: json
+        deviceType:
+          type: string
+          enum: [DESKTOP, MOBILE]
+        includeRetailMediaInReview:
+          type: boolean
+        products:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        categories:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        brands:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeQuery'
+    ContentTypeQuery:
+      type: object
+      required:
+        - count
+      properties:
+        start:
+          type: integer
+          default: 0
+        count:
+          type: integer
+        fields:
+          type: array
+          items:
+            type: string
+        filters:
+          type: array
+          items:
+            type: object
+        sorting:
+          type: array
+          items:
+            type: string
+        returnFilters:
+          type: boolean
+        excludeSiblingFilters:
+          type: array
+          items:
+            type: string
+        returnInitialContent:
+          type: boolean
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        query:
+          type: string
+        products:
+          $ref: '#/components/schemas/ContentTypeResult'
+        categories:
+          $ref: '#/components/schemas/ContentTypeResult'
+        brands:
+          $ref: '#/components/schemas/ContentTypeResult'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeResult'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeResult'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeResult'
+        html:
+          type: string
+    ContentTypeResult:
+      type: object
+      properties:
+        start:
+          type: integer
+        requestedCount:
+          type: integer
+        returnedCount:
+          type: integer
+        totalCount:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+        filters:
+          type: array
+          items:
+            type: object
+        sorting:
+          type: array
+          items:
+            type: string
+        suggestedProductStatus:
+          type: string
+    PageRequest:
+      type: object
+      required:
+        - url
+        - firstLoad
+        - params
+        - products
+      properties:
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          enum: [json, html]
+          default: html
+        firstLoad:
+          type: boolean
+        trackingUserId:
+          type: string
+        deviceType:
+          type: string
+          enum: [DESKTOP, MOBILE]
+        params:
+          type: object
+          required:
+            - filters
+          properties:
+            filters:
+              type: object
+        products:
+          type: object
+          required:
+            - start
+            - count
+          properties:
+            start:
+              type: integer
+            count:
+              type: integer
+            fields:
+              type: array
+              items:
+                type: string
+            filters:
+              type: array
+              items:
+                type: object
+            sorting:
+              type: array
+              items:
+                type: string
+    PageResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        firstLoad:
+          type: boolean
+        products:
+          type: object
+          properties:
+            start:
+              type: integer
+            count:
+              type: integer
+            total:
+              type: integer
+            html:
+              type: string
+            result:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
+    CustomerBiasRequest:
+      type: object
+      required:
+        - websiteUuid
+        - fields
+      properties:
+        websiteUuid:
+          type: string
+        trackingUserId:
+          type: string
+        email:
+          type: string
+          format: email
+        customerId:
+          type: string
+        fields:
+          type: array
+          items:
+            type: string
+        numberOfValues:
+          type: integer
+          maximum: 10
+          default: 5
+    CustomerBiasResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        bias:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                value:
+                  type: string
+                weight:
+                  type: number
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        productNumber:
+          type: string
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
+          type: object
+          additionalProperties: true
+        extraDataNumber:
+          type: object
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string

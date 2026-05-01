@@ -16,14 +16,16 @@ Hello Retail is a personalization and product recommendation platform for e-comm
 ## Timestamps
 
 - **Created:** 2025-02-06 
-- **Modified:** 2026-03-16 
+- **Modified:** 2026-04-28 
 
 ## APIs
 
 ### Hello Retail API
-Hello Retail provides a REST API that allows using the personalization features and tracking programmatically. The helloretail.js script provides an SDK that is an easy-to-use way of using the API from JavaScript directly on the website.
+Hello Retail provides a REST API for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. The helloretail.js script wraps the API as an easy-to-use JavaScript SDK for use directly on retail websites.
 
 **Human URL:** [https://developer.helloretail.com/sdk/](https://developer.helloretail.com/sdk/)
+
+**Base URL:** https://core.helloretail.com
 
 
 #### Tags:
@@ -35,6 +37,7 @@ Hello Retail provides a REST API that allows using the personalization features 
 - [Documentation](https://developer.helloretail.com/sdk/)
 - [Getting Started](https://developer.helloretail.com/getting-started/)
 - [Authentication](https://developer.helloretail.com/authentication/)
+- [OpenAPI](openapi/hello-retail-openapi.yml)
 
 ## Common Properties
 

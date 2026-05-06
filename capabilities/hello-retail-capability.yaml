@@ -1,0 +1,178 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hello Retail API
+  description: Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product
+    listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request
+    bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization
+    use cases including product discovery, behavioral tracking, and merchandising.
+  tags:
+  - Hello
+  - Retail
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: hello-retail
+    baseUri: https://core.helloretail.com
+    description: Hello Retail API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{HELLO_RETAIL_TOKEN}}'
+    resources:
+    - name: serve-recoms
+      path: /serve/recoms
+      operations:
+      - name: getrecommendations
+        method: POST
+        description: Request product recommendations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: serve-search
+      path: /serve/search
+      operations:
+      - name: search
+        method: POST
+        description: Run a search query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: serve-pages-key
+      path: /serve/pages/{key}
+      operations:
+      - name: loadpage
+        method: POST
+        description: Load a configured page
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          required: true
+          description: Page configuration key from My Hello Retail.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: serve-customer-bias
+      path: /serve/customer/bias
+      operations:
+      - name: getcustomerbias
+        method: POST
+        description: Retrieve customer bias data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: hello-retail-rest
+    description: REST adapter for Hello Retail API.
+    resources:
+    - path: /serve/recoms
+      name: getrecommendations
+      operations:
+      - method: POST
+        name: getrecommendations
+        description: Request product recommendations
+        call: hello-retail.getrecommendations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /serve/search
+      name: search
+      operations:
+      - method: POST
+        name: search
+        description: Run a search query
+        call: hello-retail.search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /serve/pages/{key}
+      name: loadpage
+      operations:
+      - method: POST
+        name: loadpage
+        description: Load a configured page
+        call: hello-retail.loadpage
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /serve/customer/bias
+      name: getcustomerbias
+      operations:
+      - method: POST
+        name: getcustomerbias
+        description: Retrieve customer bias data
+        call: hello-retail.getcustomerbias
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: hello-retail-mcp
+    transport: http
+    description: MCP adapter for Hello Retail API for AI agent use.
+    tools:
+    - name: getrecommendations
+      description: Request product recommendations
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hello-retail.getrecommendations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search
+      description: Run a search query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hello-retail.search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: loadpage
+      description: Load a configured page
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hello-retail.loadpage
+      with:
+        key: tools.key
+      inputParameters:
+      - name: key
+        type: string
+        description: Page configuration key from My Hello Retail.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcustomerbias
+      description: Retrieve customer bias data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hello-retail.getcustomerbias
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    HELLO_RETAIL_TOKEN: HELLO_RETAIL_TOKEN

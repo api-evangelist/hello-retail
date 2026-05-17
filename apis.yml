@@ -34,7 +34,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.helloretail.com/sdk/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.helloretail.com/getting-started/
       - type: Authentication
         url: https://developer.helloretail.com/authentication/
@@ -45,7 +45,7 @@ common:
     url: https://developer.helloretail.com/
   - type: Website
     url: https://www.helloretail.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://app.helloretail.com/signup
 maintainers:
   - FN: Kin Lane

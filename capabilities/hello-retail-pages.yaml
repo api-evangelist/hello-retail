@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hello Retail API — Pages
+  description: 'Hello Retail API — Pages. 1 operations. Lead operation: Load a configured page. Self-contained Naftiko capability
+    covering one Hello Retail business surface.'
+  tags:
+  - Hello Retail
+  - Pages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HELLO_RETAIL_API_KEY: HELLO_RETAIL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hello-retail-pages
+    baseUri: https://core.helloretail.com
+    description: Hello Retail API — Pages business capability. Self-contained, no shared references.
+    resources:
+    - name: serve-pages-key
+      path: /serve/pages/{key}
+      operations:
+      - name: loadpage
+        method: POST
+        description: Load a configured page
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: Page configuration key from My Hello Retail.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.HELLO_RETAIL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: hello-retail-pages-rest
+    port: 8080
+    description: REST adapter for Hello Retail API — Pages. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/serve/pages/{key}
+      name: serve-pages-key
+      description: REST surface for serve-pages-key.
+      operations:
+      - method: POST
+        name: loadpage
+        description: Load a configured page
+        call: hello-retail-pages.loadpage
+        with:
+          key: rest.key
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hello-retail-pages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hello Retail API — Pages. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: load-configured-page
+      description: Load a configured page
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hello-retail-pages.loadpage
+      with:
+        key: tools.key
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

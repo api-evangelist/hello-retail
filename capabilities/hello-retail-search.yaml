@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hello Retail API — Search
+  description: 'Hello Retail API — Search. 1 operations. Lead operation: Run a search query. Self-contained Naftiko capability
+    covering one Hello Retail business surface.'
+  tags:
+  - Hello Retail
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HELLO_RETAIL_API_KEY: HELLO_RETAIL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hello-retail-search
+    baseUri: https://core.helloretail.com
+    description: Hello Retail API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: serve-search
+      path: /serve/search
+      operations:
+      - name: search
+        method: POST
+        description: Run a search query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.HELLO_RETAIL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: hello-retail-search-rest
+    port: 8080
+    description: REST adapter for Hello Retail API — Search. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/serve/search
+      name: serve-search
+      description: REST surface for serve-search.
+      operations:
+      - method: POST
+        name: search
+        description: Run a search query
+        call: hello-retail-search.search
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hello-retail-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hello Retail API — Search. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: run-search-query
+      description: Run a search query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: hello-retail-search.search
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

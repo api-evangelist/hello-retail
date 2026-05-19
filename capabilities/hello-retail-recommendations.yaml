@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hello Retail API — Recommendations
+  description: 'Hello Retail API — Recommendations. 1 operations. Lead operation: Request product recommendations. Self-contained
+    Naftiko capability covering one Hello Retail business surface.'
+  tags:
+  - Hello Retail
+  - Recommendations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HELLO_RETAIL_API_KEY: HELLO_RETAIL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hello-retail-recommendations
+    baseUri: https://core.helloretail.com
+    description: Hello Retail API — Recommendations business capability. Self-contained, no shared references.
+    resources:
+    - name: serve-recoms
+      path: /serve/recoms
+      operations:
+      - name: getrecommendations
+        method: POST
+        description: Request product recommendations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.HELLO_RETAIL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: hello-retail-recommendations-rest
+    port: 8080
+    description: REST adapter for Hello Retail API — Recommendations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/serve/recoms
+      name: serve-recoms
+      description: REST surface for serve-recoms.
+      operations:
+      - method: POST
+        name: getrecommendations
+        description: Request product recommendations
+        call: hello-retail-recommendations.getrecommendations
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hello-retail-recommendations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hello Retail API — Recommendations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: request-product-recommendations
+      description: Request product recommendations
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hello-retail-recommendations.getrecommendations
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

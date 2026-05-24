@@ -51,6 +51,8 @@ common:
   url: https://www.helloretail.com/
 - type: SignUp
   url: https://app.helloretail.com/signup
+- type: LLMsTxt
+  url: https://helloretail.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,982 @@
+{
+  "item": [
+    {
+      "id": "dec1004f-c8f1-4273-be54-9ba74611666e",
+      "name": "Recommendations",
+      "description": {
+        "content": "Managed and unmanaged product recommendation requests.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0e9effb-52a2-4370-8007-107eeeb9a68c",
+          "name": "Request product recommendations",
+          "request": {
+            "name": "Request product recommendations",
+            "description": {
+              "content": "Returns one or more recommendation result sets, supporting both managed (pre-configured) and unmanaged (custom) recommendation requests. A single user identifier (trackingUserId, email, or customerId) may accompany the request to enable personalization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "recoms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"<string>\",\n      \"format\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3790\n      },\n      \"deviceType\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"format\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"key_0\": 3938\n      },\n      \"deviceType\": \"<string>\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d576e35-d669-4b92-ad14-399765b7fe5c",
+              "name": "Recommendation results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "recoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"string\",\n      \"format\": \"html\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6411.37482345781\n      },\n      \"deviceType\": \"DESKTOP\"\n    },\n    {\n      \"key\": \"string\",\n      \"format\": \"json\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\"\n      },\n      \"deviceType\": \"MOBILE\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"responses\": [\n    {\n      \"key\": \"string\",\n      \"trackingKey\": \"string\",\n      \"success\": true,\n      \"products\": [\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"https://TGMGASTQU.arngNHcl+j63DPKKE.79j6xh53psSY7TC9o-BnIebsG.98iL\",\n          \"price\": 6840.169628278113,\n          \"inStock\": false,\n          \"extraData\": {\n            \"key_0\": 4653.8669763793,\n            \"key_1\": \"string\"\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 2436.4328333497397\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"https://RZsbyBcBKTSkNDZCsMhQ.hgfnvRrGzWW+Tl43yNGNGgVaF3Cpmr8HjfZ\",\n          \"price\": 9164.83265957879,\n          \"inStock\": false,\n          \"extraData\": {\n            \"key_0\": 6160,\n            \"key_1\": \"string\"\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 9852.212603891694,\n            \"key_1\": 704.8103246259718\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_1\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        }\n      ],\n      \"html\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"trackingKey\": \"string\",\n      \"success\": true,\n      \"products\": [\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"http://IUJJZUXJjEJlNYUAyeagXfR.rnamz+kmwp.ZTV4xTBIdyL.zPMBUS\",\n          \"price\": 9817.870457726503,\n          \"inStock\": true,\n          \"extraData\": {\n            \"key_0\": 7663\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 5335.425699980855\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_1\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_2\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"https://xk.eegtPn\",\n          \"price\": 9169.109141371495,\n          \"inStock\": true,\n          \"extraData\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": true\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 2781.44824196927,\n            \"key_1\": 5853.51054474638\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_1\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_2\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        }\n      ],\n      \"html\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02fff8b1-66cb-481c-b10a-73556e87e184",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "recoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"string\",\n      \"format\": \"html\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6411.37482345781\n      },\n      \"deviceType\": \"DESKTOP\"\n    },\n    {\n      \"key\": \"string\",\n      \"format\": \"json\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\"\n      },\n      \"deviceType\": \"MOBILE\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b1c4e50-8807-4757-81f5-e6cb038650ac",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "recoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"string\",\n      \"format\": \"html\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6411.37482345781\n      },\n      \"deviceType\": \"DESKTOP\"\n    },\n    {\n      \"key\": \"string\",\n      \"format\": \"json\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\"\n      },\n      \"deviceType\": \"MOBILE\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "80b82b0b-2d54-4435-ad8c-9719fdf88199",
+      "name": "Search",
+      "description": {
+        "content": "On-site search across products, categories, brands, and content.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4a12c34-d682-4a56-a8b9-87df1d292fd1",
+          "name": "Run a search query",
+          "request": {
+            "name": "Run a search query",
+            "description": {
+              "content": "Performs a search against a configured search key and returns matching products and optionally categories, brands, blog posts, site pages, and redirects. Supports pagination, filtering, sorting, and faceting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"categories\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"brands\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"blogPosts\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"sitePages\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"redirects\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28b85cc1-b28c-4896-bcf6-d0a705e00369",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": 2154,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"categories\": {\n    \"count\": 5235,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"brands\": {\n    \"count\": 5388,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"blogPosts\": {\n    \"count\": 7013,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"sitePages\": {\n    \"count\": 4371,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"redirects\": {\n    \"count\": 5095,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"query\": \"string\",\n  \"products\": {\n    \"start\": 7651,\n    \"requestedCount\": 3019,\n    \"returnedCount\": 104,\n    \"totalCount\": 3286,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"categories\": {\n    \"start\": 1350,\n    \"requestedCount\": 8700,\n    \"returnedCount\": 2255,\n    \"totalCount\": 3581,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"brands\": {\n    \"start\": 1489,\n    \"requestedCount\": 6252,\n    \"returnedCount\": 9208,\n    \"totalCount\": 830,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"blogPosts\": {\n    \"start\": 244,\n    \"requestedCount\": 3361,\n    \"returnedCount\": 9742,\n    \"totalCount\": 1594,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"sitePages\": {\n    \"start\": 2624,\n    \"requestedCount\": 7619,\n    \"returnedCount\": 9029,\n    \"totalCount\": 7342,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"redirects\": {\n    \"start\": 3185,\n    \"requestedCount\": 4366,\n    \"returnedCount\": 3389,\n    \"totalCount\": 8737,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"html\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e5d37e1-30cd-4293-b2ae-f9748a83242a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": 2154,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"categories\": {\n    \"count\": 5235,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"brands\": {\n    \"count\": 5388,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"blogPosts\": {\n    \"count\": 7013,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"sitePages\": {\n    \"count\": 4371,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"redirects\": {\n    \"count\": 5095,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82f4ee34-1ee6-4517-8c37-a82fe047bca6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": 2154,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"categories\": {\n    \"count\": 5235,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"brands\": {\n    \"count\": 5388,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"blogPosts\": {\n    \"count\": 7013,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"sitePages\": {\n    \"count\": 4371,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"redirects\": {\n    \"count\": 5095,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9977dfdc-67de-416f-afb6-7a6cec6980fd",
+      "name": "Pages",
+      "description": {
+        "content": "Page-driven product listings with filtering and sorting.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3e9c3f5-dd9a-4e25-86eb-d5ea1ad7bc9f",
+          "name": "Load a configured page",
+          "request": {
+            "name": "Load a configured page",
+            "description": {
+              "content": "Returns the product listing rendered by the page configuration identified by key. Supports filters, sorting, pagination, and a first-load flag for analytics view tracking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "pages",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) Page configuration key from My Hello Retail."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77f3a3e7-ec5d-40ad-81fa-55870b2443f3",
+              "name": "Page results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"firstLoad\": false,\n  \"products\": {\n    \"start\": 8544,\n    \"count\": 7299,\n    \"total\": 2539,\n    \"html\": \"string\",\n    \"result\": [\n      {\n        \"title\": \"string\",\n        \"productNumber\": \"string\",\n        \"imgUrl\": \"http://FKYXHofGhwqwPazQO.jmrqGsP9I9fbXrubEAdsdZ4myZFjL3KiTG.7LC+NzLOv9c2psvPo,ST3Ck0P7ePx69qh,vLPYSFM\",\n        \"price\": 66.2137353949399,\n        \"inStock\": false,\n        \"extraData\": {\n          \"key_0\": 698,\n          \"key_1\": 1067.111958651662\n        },\n        \"extraDataNumber\": {\n          \"key_0\": 2346.195065570111\n        },\n        \"extraDataList\": {\n          \"key_0\": [\n            \"string\",\n            \"string\"\n          ],\n          \"key_1\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      {\n        \"title\": \"string\",\n        \"productNumber\": \"string\",\n        \"imgUrl\": \"http://zRvNNxJuQidGoIM.esunxZcaou5,pdb8G-YuBEeYzazwUWUsa\",\n        \"price\": 6356.667414683558,\n        \"inStock\": false,\n        \"extraData\": {\n          \"key_0\": 1900\n        },\n        \"extraDataNumber\": {\n          \"key_0\": 6239.911790348814\n        },\n        \"extraDataList\": {\n          \"key_0\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c20f9dae-3a3c-4364-a07d-4eff4a89d5c4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0170320-2e2e-4b9d-ae6d-c1264ffcc3cd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "36d8812e-4675-4baa-9800-c3ac0dea19b3",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff735b5f-37db-40c4-b547-8a67eb971bf7",
+      "name": "Customer Bias",
+      "description": {
+        "content": "Retrieve weighted customer preference data for personalization.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "39260035-b9f6-4043-b558-9ad7af48b36e",
+          "name": "Retrieve customer bias data",
+          "request": {
+            "name": "Retrieve customer bias data",
+            "description": {
+              "content": "Returns weighted preference values for the requested fields for a given customer identifier. Used to drive personalization based on observed behavior.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "customer",
+                "bias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "073cedec-68fb-46a4-9cca-e2b3278b0a43",
+              "name": "Customer bias values",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "customer",
+                    "bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"bias\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"weight\": 1293.290458682177\n      },\n      {\n        \"value\": \"string\",\n        \"weight\": 1842.1352253709988\n      }\n    ],\n    \"key_1\": [\n      {\n        \"value\": \"string\",\n        \"weight\": 8181.454369627946\n      },\n      {\n        \"value\": \"string\",\n        \"weight\": 6190.174660726208\n      }\n    ],\n    \"key_2\": [\n      {\n        \"value\": \"string\",\n        \"weight\": 4055.701764470404\n      },\n      {\n        \"value\": \"string\",\n        \"weight\": 2700.624821720877\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b956f8f-c528-441f-bcb9-e8c530c3e78f",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "customer",
+                    "bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5dca6aa7-e598-4b94-a6d1-4d10704efc9e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "customer",
+                    "bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://core.helloretail.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e8d0bc85-d6d0-40bd-8133-c6e5904a1afc",
+    "name": "Hello Retail API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.\n\nContact Support:\n Name: Hello Retail",
+      "type": "text/plain"
+    }
+  }
+}

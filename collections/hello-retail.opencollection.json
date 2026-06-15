@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hello Retail API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request product recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/recoms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns one or more recommendation result sets, supporting both managed (pre-configured) and unmanaged (custom) recommendation requests. A single user identifier (trackingUserId, email, or customerId) may accompany the request to enable personalization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run a search query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Performs a search against a configured search key and returns matching products and optionally categories, brands, blog posts, site pages, and redirects. Supports pagination, filtering, sorting, and faceting."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Load a configured page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/pages/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Page configuration key from My Hello Retail."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the product listing rendered by the page configuration identified by key. Supports filters, sorting, pagination, and a first-load flag for analytics view tracking."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customer Bias",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve customer bias data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/customer/bias",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns weighted preference values for the requested fields for a given customer identifier. Used to drive personalization based on observed behavior."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

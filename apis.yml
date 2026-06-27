@@ -44,9 +44,9 @@ common:
     url: https://developer.helloretail.com/
   - type: Website
     url: https://www.helloretail.com/
-  - type: SignUp
+  - type: Signup
     url: https://app.helloretail.com/signup
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://helloretail.com/llms.txt
 maintainers:
   - FN: Kin Lane

@@ -38,6 +38,10 @@ apis:
       - type: OpenAPI
         url: openapi/hello-retail-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/hello-retail-domain-security.yml
+  - type: Authentication
+    url: authentication/hello-retail-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/helloretail
   - type: Portal

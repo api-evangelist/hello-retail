@@ -38,6 +38,8 @@ apis:
       - type: OpenAPI
         url: openapi/hello-retail-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/hello-retail-agentic-access.yml
   - type: DomainSecurity
     url: security/hello-retail-domain-security.yml
   - type: Authentication

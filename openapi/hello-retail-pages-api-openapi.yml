@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: Hello Retail Customer Bias Pages API
+  description: Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.
+  version: '1.0'
+  contact:
+    name: Hello Retail
+    url: https://developer.helloretail.com/
+  license:
+    name: Proprietary
+    url: https://www.helloretail.com/terms
+servers:
+- url: https://core.helloretail.com
+  description: Hello Retail core serving host
+tags:
+- name: Pages
+  description: Page-driven product listings with filtering and sorting.
+paths:
+  /serve/pages/{key}:
+    post:
+      operationId: loadPage
+      summary: Load a configured page
+      description: Returns the product listing rendered by the page configuration identified by key. Supports filters, sorting, pagination, and a first-load flag for analytics view tracking.
+      tags:
+      - Pages
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: Page configuration key from My Hello Retail.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageRequest'
+      responses:
+        '200':
+          description: Page results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Page not found
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        productNumber:
+          type: string
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
+          type: object
+          additionalProperties: true
+        extraDataNumber:
+          type: object
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PageRequest:
+      type: object
+      required:
+      - url
+      - firstLoad
+      - params
+      - products
+      properties:
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          enum:
+          - json
+          - html
+          default: html
+        firstLoad:
+          type: boolean
+        trackingUserId:
+          type: string
+        deviceType:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
+        params:
+          type: object
+          required:
+          - filters
+          properties:
+            filters:
+              type: object
+        products:
+          type: object
+          required:
+          - start
+          - count
+          properties:
+            start:
+              type: integer
+            count:
+              type: integer
+            fields:
+              type: array
+              items:
+                type: string
+            filters:
+              type: array
+              items:
+                type: object
+            sorting:
+              type: array
+              items:
+                type: string
+    PageResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        firstLoad:
+          type: boolean
+        products:
+          type: object
+          properties:
+            start:
+              type: integer
+            count:
+              type: integer
+            total:
+              type: integer
+            html:
+              type: string
+            result:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+externalDocs:
+  description: Hello Retail Developer Documentation
+  url: https://developer.helloretail.com/

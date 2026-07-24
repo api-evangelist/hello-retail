@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: Hello Retail Customer Bias Search API
+  description: Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.
+  version: '1.0'
+  contact:
+    name: Hello Retail
+    url: https://developer.helloretail.com/
+  license:
+    name: Proprietary
+    url: https://www.helloretail.com/terms
+servers:
+- url: https://core.helloretail.com
+  description: Hello Retail core serving host
+tags:
+- name: Search
+  description: On-site search across products, categories, brands, and content.
+paths:
+  /serve/search:
+    post:
+      operationId: search
+      summary: Run a search query
+      description: Performs a search against a configured search key and returns matching products and optionally categories, brands, blog posts, site pages, and redirects. Supports pagination, filtering, sorting, and faceting.
+      tags:
+      - Search
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    ContentTypeQuery:
+      type: object
+      required:
+      - count
+      properties:
+        start:
+          type: integer
+          default: 0
+        count:
+          type: integer
+        fields:
+          type: array
+          items:
+            type: string
+        filters:
+          type: array
+          items:
+            type: object
+        sorting:
+          type: array
+          items:
+            type: string
+        returnFilters:
+          type: boolean
+        excludeSiblingFilters:
+          type: array
+          items:
+            type: string
+        returnInitialContent:
+          type: boolean
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        query:
+          type: string
+        products:
+          $ref: '#/components/schemas/ContentTypeResult'
+        categories:
+          $ref: '#/components/schemas/ContentTypeResult'
+        brands:
+          $ref: '#/components/schemas/ContentTypeResult'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeResult'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeResult'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeResult'
+        html:
+          type: string
+    SearchRequest:
+      type: object
+      required:
+      - query
+      - key
+      properties:
+        query:
+          type: string
+        key:
+          type: string
+        id:
+          type: integer
+        trackingUserId:
+          type: string
+        format:
+          type: string
+          enum:
+          - json
+          - html
+          default: json
+        deviceType:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
+        includeRetailMediaInReview:
+          type: boolean
+        products:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        categories:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        brands:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeQuery'
+    ContentTypeResult:
+      type: object
+      properties:
+        start:
+          type: integer
+        requestedCount:
+          type: integer
+        returnedCount:
+          type: integer
+        totalCount:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+        filters:
+          type: array
+          items:
+            type: object
+        sorting:
+          type: array
+          items:
+            type: string
+        suggestedProductStatus:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+externalDocs:
+  description: Hello Retail Developer Documentation
+  url: https://developer.helloretail.com/

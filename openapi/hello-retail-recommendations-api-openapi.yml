@@ -1,0 +1,202 @@
+openapi: 3.1.0
+info:
+  title: Hello Retail Customer Bias Recommendations API
+  description: Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.
+  version: '1.0'
+  contact:
+    name: Hello Retail
+    url: https://developer.helloretail.com/
+  license:
+    name: Proprietary
+    url: https://www.helloretail.com/terms
+servers:
+- url: https://core.helloretail.com
+  description: Hello Retail core serving host
+tags:
+- name: Recommendations
+  description: Managed and unmanaged product recommendation requests.
+paths:
+  /serve/recoms:
+    post:
+      operationId: getRecommendations
+      summary: Request product recommendations
+      description: Returns one or more recommendation result sets, supporting both managed (pre-configured) and unmanaged (custom) recommendation requests. A single user identifier (trackingUserId, email, or customerId) may accompany the request to enable personalization.
+      tags:
+      - Recommendations
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecomRequest'
+      responses:
+        '200':
+          description: Recommendation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecomResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    RecomRequest:
+      type: object
+      required:
+      - requests
+      properties:
+        websiteUuid:
+          type: string
+          description: Identifies the website in Hello Retail.
+        trackingUserId:
+          type: string
+          description: Hello Retail-generated tracking user ID.
+        email:
+          type: string
+          format: email
+        customerId:
+          type: string
+        includeRetailMediaInReview:
+          type: boolean
+        requests:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/ManagedRecomRequest'
+            - $ref: '#/components/schemas/UnmanagedRecomRequest'
+    UnmanagedRecomRequest:
+      type: object
+      required:
+      - trackingKey
+      - count
+      - sources
+      properties:
+        trackingKey:
+          type: string
+          pattern: ^[0-9a-zA-Z-]{1,100}$
+        count:
+          type: integer
+          minimum: 1
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductSource'
+        fields:
+          type: array
+          items:
+            type: string
+        hideAdditionalVariants:
+          type: boolean
+          default: true
+        context:
+          type: object
+          additionalProperties: true
+    ProductSource:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - TOP
+          - MOST_BOUGHT
+          - MOST_VIEWED
+          - ALTERNATIVES
+          - BOUGHT_TOGETHER
+          - RETARGETED
+          - RECENTLY_BOUGHT
+        context:
+          type: object
+          additionalProperties: true
+    ManagedRecomRequest:
+      type: object
+      required:
+      - key
+      - format
+      properties:
+        key:
+          type: string
+          description: Recom box identifier configured in My Hello Retail.
+        format:
+          type: string
+          enum:
+          - html
+          - json
+        fields:
+          type: array
+          items:
+            type: string
+        context:
+          type: object
+          additionalProperties: true
+        deviceType:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        productNumber:
+          type: string
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
+          type: object
+          additionalProperties: true
+        extraDataNumber:
+          type: object
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    RecomResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              trackingKey:
+                type: string
+              success:
+                type: boolean
+              products:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              html:
+                type: string
+              code:
+                type: string
+              message:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+externalDocs:
+  description: Hello Retail Developer Documentation
+  url: https://developer.helloretail.com/

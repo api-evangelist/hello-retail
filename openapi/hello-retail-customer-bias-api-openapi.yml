@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: Hello Retail Customer Bias API
+  description: Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.
+  version: '1.0'
+  contact:
+    name: Hello Retail
+    url: https://developer.helloretail.com/
+  license:
+    name: Proprietary
+    url: https://www.helloretail.com/terms
+servers:
+- url: https://core.helloretail.com
+  description: Hello Retail core serving host
+tags:
+- name: Customer Bias
+  description: Retrieve weighted customer preference data for personalization.
+paths:
+  /serve/customer/bias:
+    post:
+      operationId: getCustomerBias
+      summary: Retrieve customer bias data
+      description: Returns weighted preference values for the requested fields for a given customer identifier. Used to drive personalization based on observed behavior.
+      tags:
+      - Customer Bias
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBiasRequest'
+      responses:
+        '200':
+          description: Customer bias values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerBiasResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    CustomerBiasRequest:
+      type: object
+      required:
+      - websiteUuid
+      - fields
+      properties:
+        websiteUuid:
+          type: string
+        trackingUserId:
+          type: string
+        email:
+          type: string
+          format: email
+        customerId:
+          type: string
+        fields:
+          type: array
+          items:
+            type: string
+        numberOfValues:
+          type: integer
+          maximum: 10
+          default: 5
+    CustomerBiasResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        bias:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                value:
+                  type: string
+                weight:
+                  type: number
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+externalDocs:
+  description: Hello Retail Developer Documentation
+  url: https://developer.helloretail.com/

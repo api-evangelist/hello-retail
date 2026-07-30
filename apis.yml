@@ -5,7 +5,20 @@ description: >-
   JavaScript SDK for integrating personalized product recommendations, search, and behavioral tracking into retail
   websites.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hello-retail.png
 tags:
   - E-Commerce
   - Personalization
@@ -16,27 +29,70 @@ created: '2025-02-06'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: hello-retail:hello-retail-api
-    name: Hello Retail API
-    description: >-
-      Hello Retail provides a REST API for personalized product recommendations, on-site search, page-driven product
-      listings, and customer bias retrieval. The helloretail.js script wraps the API as an easy-to-use JavaScript SDK
-      for use directly on retail websites.
-    humanURL: https://developer.helloretail.com/sdk/
-    baseURL: https://core.helloretail.com
-    tags:
-      - E-Commerce
-      - Personalization
-      - REST
-    properties:
-      - type: Documentation
-        url: https://developer.helloretail.com/sdk/
-      - type: GettingStarted
-        url: https://developer.helloretail.com/getting-started/
-      - type: Authentication
-        url: https://developer.helloretail.com/authentication/
-      - type: OpenAPI
-        url: openapi/hello-retail-openapi.yml
+- aid: hello-retail:hello-retail-customer-bias-api
+  name: Hello Retail Customer Bias API
+  description: Retrieve weighted customer preference data for personalization.
+  humanURL: https://developer.helloretail.com/sdk/
+  baseURL: https://core.helloretail.com
+  tags:
+  - Customer Bias
+  properties:
+  - type: OpenAPI
+    url: openapi/hello-retail-customer-bias-api-openapi.yml
+  - type: Documentation
+    url: https://developer.helloretail.com/sdk/
+  - type: GettingStarted
+    url: https://developer.helloretail.com/getting-started/
+  - type: Authentication
+    url: https://developer.helloretail.com/authentication/
+- aid: hello-retail:hello-retail-pages-api
+  name: Hello Retail Pages API
+  description: Page-driven product listings with filtering and sorting.
+  humanURL: https://developer.helloretail.com/sdk/
+  baseURL: https://core.helloretail.com
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/hello-retail-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.helloretail.com/sdk/
+  - type: GettingStarted
+    url: https://developer.helloretail.com/getting-started/
+  - type: Authentication
+    url: https://developer.helloretail.com/authentication/
+- aid: hello-retail:hello-retail-recommendations-api
+  name: Hello Retail Recommendations API
+  description: Managed and unmanaged product recommendation requests.
+  humanURL: https://developer.helloretail.com/sdk/
+  baseURL: https://core.helloretail.com
+  tags:
+  - Recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/hello-retail-recommendations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.helloretail.com/sdk/
+  - type: GettingStarted
+    url: https://developer.helloretail.com/getting-started/
+  - type: Authentication
+    url: https://developer.helloretail.com/authentication/
+- aid: hello-retail:hello-retail-search-api
+  name: Hello Retail Search API
+  description: On-site search across products, categories, brands, and content.
+  humanURL: https://developer.helloretail.com/sdk/
+  baseURL: https://core.helloretail.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/hello-retail-search-api-openapi.yml
+  - type: Documentation
+    url: https://developer.helloretail.com/sdk/
+  - type: GettingStarted
+    url: https://developer.helloretail.com/getting-started/
+  - type: Authentication
+    url: https://developer.helloretail.com/authentication/
 common:
   - type: AgenticAccess
     url: agentic-access/hello-retail-agentic-access.yml

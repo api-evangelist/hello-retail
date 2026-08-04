@@ -1,0 +1,20 @@
+{
+  "provider": "hello-retail",
+  "sources": [
+    "hello-retail-customer-bias-api-openapi.yml",
+    "hello-retail-pages-api-openapi.yml",
+    "hello-retail-recommendations-api-openapi.yml",
+    "hello-retail-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "hello-retail-customer-bias-api-openapi.yml",
+    "hello-retail-pages-api-openapi.yml",
+    "hello-retail-recommendations-api-openapi.yml",
+    "hello-retail-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

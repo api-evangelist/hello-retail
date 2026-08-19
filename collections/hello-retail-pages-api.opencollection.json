@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hello Retail Customer Bias Pages API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Load a configured page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/pages/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Page configuration key from My Hello Retail."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the product listing rendered by the page configuration identified by key. Supports filters, sorting, pagination, and a first-load flag for analytics view tracking."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

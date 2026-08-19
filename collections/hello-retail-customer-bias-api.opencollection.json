@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hello Retail Customer Bias API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Bias",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve customer bias data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/customer/bias",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns weighted preference values for the requested fields for a given customer identifier. Used to drive personalization based on observed behavior."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

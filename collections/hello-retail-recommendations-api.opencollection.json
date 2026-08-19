@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hello Retail Customer Bias Recommendations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request product recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/recoms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns one or more recommendation result sets, supporting both managed (pre-configured) and unmanaged (custom) recommendation requests. A single user identifier (trackingUserId, email, or customerId) may accompany the request to enable personalization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "efc97229-8b5f-4751-9b08-ace686d530c7",
+      "name": "Pages",
+      "description": {
+        "content": "Page-driven product listings with filtering and sorting.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84baf0aa-2685-4a70-a275-c2f417e89b72",
+          "name": "Load a configured page",
+          "request": {
+            "name": "Load a configured page",
+            "description": {
+              "content": "Returns the product listing rendered by the page configuration identified by key. Supports filters, sorting, pagination, and a first-load flag for analytics view tracking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "pages",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) Page configuration key from My Hello Retail."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "848ce7ae-36a8-49bf-8e15-a095a5194690",
+              "name": "Page results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"firstLoad\": false,\n  \"products\": {\n    \"start\": 4628,\n    \"count\": 8460,\n    \"total\": 2561,\n    \"html\": \"string\",\n    \"result\": [\n      {\n        \"title\": \"string\",\n        \"productNumber\": \"string\",\n        \"imgUrl\": \"http://FuVSDntJnWlrfeZvJL.vjVwzcOkKeRAQTSntxHTi,Np9pLtxzR\",\n        \"price\": 3822.5437768980532,\n        \"inStock\": false,\n        \"extraData\": {\n          \"key_0\": \"string\",\n          \"key_1\": true,\n          \"key_2\": 1028\n        },\n        \"extraDataNumber\": {\n          \"key_0\": 7095.273853310008,\n          \"key_1\": 8616.114076403022,\n          \"key_2\": 8344.496571427366,\n          \"key_3\": 7014.4888292645965\n        },\n        \"extraDataList\": {\n          \"key_0\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      {\n        \"title\": \"string\",\n        \"productNumber\": \"string\",\n        \"imgUrl\": \"https://XIyfmMVlnvClSk.grlrgCr9LctI194g\",\n        \"price\": 7481.826219811139,\n        \"inStock\": true,\n        \"extraData\": {\n          \"key_0\": 3475.056971240932,\n          \"key_1\": 1048,\n          \"key_2\": 9991,\n          \"key_3\": false\n        },\n        \"extraDataNumber\": {\n          \"key_0\": 8865.909978402253,\n          \"key_1\": 8712.304723212139\n        },\n        \"extraDataList\": {\n          \"key_0\": [\n            \"string\",\n            \"string\"\n          ],\n          \"key_1\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c46bcef3-b61c-46d3-8a1b-ef23809fe992",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "457f7d69-92bc-4487-b8b6-e702dcf6509e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed0fb875-e3ea-471c-94a4-215296a62c98",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "pages",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Page configuration key from My Hello Retail."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"firstLoad\": \"<boolean>\",\n  \"params\": {\n    \"filters\": \"<object>\"\n  },\n  \"products\": {\n    \"start\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"format\": \"html\",\n  \"trackingUserId\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://core.helloretail.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a57fee9a-d3ae-4161-b7d3-5ad35136a1df",
+    "name": "Hello Retail Customer Bias Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.\n\nContact Support:\n Name: Hello Retail",
+      "type": "text/plain"
+    }
+  }
+}

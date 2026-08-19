@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hello Retail Customer Bias Search API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run a search query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://core.helloretail.com/serve/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Performs a search against a configured search key and returns matching products and optionally categories, brands, blog posts, site pages, and redirects. Supports pagination, filtering, sorting, and faceting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

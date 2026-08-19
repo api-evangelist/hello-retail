@@ -1,0 +1,241 @@
+{
+  "item": [
+    {
+      "id": "1abebb48-2d2d-40fa-bf10-371eb793a4f9",
+      "name": "Customer Bias",
+      "description": {
+        "content": "Retrieve weighted customer preference data for personalization.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ff07e34-5132-46a7-afd6-f35fee77dc73",
+          "name": "Retrieve customer bias data",
+          "request": {
+            "name": "Retrieve customer bias data",
+            "description": {
+              "content": "Returns weighted preference values for the requested fields for a given customer identifier. Used to drive personalization based on observed behavior.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "customer",
+                "bias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14646cdd-3c73-4012-b4c7-d064d2e09bad",
+              "name": "Customer bias values",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "customer",
+                    "bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"bias\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"weight\": 4049.429815146436\n      },\n      {\n        \"value\": \"string\",\n        \"weight\": 1953.728960596035\n      }\n    ],\n    \"key_1\": [\n      {\n        \"value\": \"string\",\n        \"weight\": 7951.924958385339\n      },\n      {\n        \"value\": \"string\",\n        \"weight\": 1582.226968345688\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf9c5fe4-d570-42f5-a994-cbdfa2608454",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "customer",
+                    "bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e51a9de-1e11-4f12-989b-6e7839456ca2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "customer",
+                    "bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"websiteUuid\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"numberOfValues\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://core.helloretail.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b9baf9df-ce29-48f6-acbb-ed86670bae59",
+    "name": "Hello Retail Customer Bias API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.\n\nContact Support:\n Name: Hello Retail",
+      "type": "text/plain"
+    }
+  }
+}

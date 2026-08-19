@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "f6407192-9ac6-48c4-8215-746514782d37",
+      "name": "Recommendations",
+      "description": {
+        "content": "Managed and unmanaged product recommendation requests.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b10b586-ec0e-49c5-ad63-7285c113e710",
+          "name": "Request product recommendations",
+          "request": {
+            "name": "Request product recommendations",
+            "description": {
+              "content": "Returns one or more recommendation result sets, supporting both managed (pre-configured) and unmanaged (custom) recommendation requests. A single user identifier (trackingUserId, email, or customerId) may accompany the request to enable personalization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "recoms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"<string>\",\n      \"format\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"key_0\": 5874,\n        \"key_1\": 5232,\n        \"key_2\": true,\n        \"key_3\": 6972\n      },\n      \"deviceType\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"format\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"key_0\": 3104\n      },\n      \"deviceType\": \"<string>\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a36b757a-afcd-40d0-aa97-82f2b92e91fc",
+              "name": "Recommendation results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "recoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"string\",\n      \"format\": \"json\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\"\n      },\n      \"deviceType\": \"DESKTOP\"\n    },\n    {\n      \"key\": \"string\",\n      \"format\": \"html\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": true,\n        \"key_1\": 1118.3681967075431\n      },\n      \"deviceType\": \"DESKTOP\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"responses\": [\n    {\n      \"key\": \"string\",\n      \"trackingKey\": \"string\",\n      \"success\": false,\n      \"products\": [\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"http://udjEr.fcjz5xg9E.H4A1UGLK-h40Ta2GgPJybPBgKACPo\",\n          \"price\": 9386.292727686805,\n          \"inStock\": false,\n          \"extraData\": {\n            \"key_0\": true,\n            \"key_1\": \"string\"\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 1489.4515135699748,\n            \"key_1\": 1528.1947237492966\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_1\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"https://OnisfKeFWocVUOYBUCAVKMIEByPje.syrxbmhaA5iyGyw7YWovcU\",\n          \"price\": 3907.669162661699,\n          \"inStock\": false,\n          \"extraData\": {\n            \"key_0\": 9641,\n            \"key_1\": 2040\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 9425.086774402149,\n            \"key_1\": 5349.184647841341,\n            \"key_2\": 645.7430765245286,\n            \"key_3\": 6273.241677575076\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_1\": [\n              \"string\",\n              \"string\"\n            ],\n            \"key_2\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        }\n      ],\n      \"html\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"trackingKey\": \"string\",\n      \"success\": false,\n      \"products\": [\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"https://TRUgdjoVJUQDXQ.oycloTF5SOSFogAzVWcyJtFg+PTEQzo7v6d\",\n          \"price\": 4603.018447897771,\n          \"inStock\": false,\n          \"extraData\": {\n            \"key_0\": 5331.80140331235,\n            \"key_1\": true\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 1143.522174785152,\n            \"key_1\": 2567.0250887693855,\n            \"key_2\": 8783.017241133442\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"productNumber\": \"string\",\n          \"imgUrl\": \"http://cciPeMhFVLlaexdcmQIJFiQBcDWIV.eifjPbDaFTs75xiknBXuMMAyTJY7IMXsHc,9SpZ06EMFauaPbnV\",\n          \"price\": 5848.266698916585,\n          \"inStock\": false,\n          \"extraData\": {\n            \"key_0\": 5460\n          },\n          \"extraDataNumber\": {\n            \"key_0\": 3477.0998175952936,\n            \"key_1\": 5328.922155753442\n          },\n          \"extraDataList\": {\n            \"key_0\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        }\n      ],\n      \"html\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1eeec06d-467f-40f2-a702-68050fc1b9e4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "recoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"string\",\n      \"format\": \"json\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\"\n      },\n      \"deviceType\": \"DESKTOP\"\n    },\n    {\n      \"key\": \"string\",\n      \"format\": \"html\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": true,\n        \"key_1\": 1118.3681967075431\n      },\n      \"deviceType\": \"DESKTOP\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7b3eb0f-b8b6-4200-aa89-385227a78bbd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "recoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"key\": \"string\",\n      \"format\": \"json\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": \"string\"\n      },\n      \"deviceType\": \"DESKTOP\"\n    },\n    {\n      \"key\": \"string\",\n      \"format\": \"html\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"context\": {\n        \"key_0\": true,\n        \"key_1\": 1118.3681967075431\n      },\n      \"deviceType\": \"DESKTOP\"\n    }\n  ],\n  \"websiteUuid\": \"<string>\",\n  \"trackingUserId\": \"<string>\",\n  \"email\": \"<email>\",\n  \"customerId\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://core.helloretail.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "507c4b98-af76-4bba-915f-a9c5f6ba3483",
+    "name": "Hello Retail Customer Bias Recommendations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.\n\nContact Support:\n Name: Hello Retail",
+      "type": "text/plain"
+    }
+  }
+}

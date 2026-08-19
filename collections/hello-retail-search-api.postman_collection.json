@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "36e1288e-a5e2-486f-8c94-b7f8c7536e01",
+      "name": "Search",
+      "description": {
+        "content": "On-site search across products, categories, brands, and content.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28ff5fbe-0fd7-4d4f-9a76-5ab2354b3b14",
+          "name": "Run a search query",
+          "request": {
+            "name": "Run a search query",
+            "description": {
+              "content": "Performs a search against a configured search key and returns matching products and optionally categories, brands, blog posts, site pages, and redirects. Supports pagination, filtering, sorting, and faceting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serve",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"categories\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"brands\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"blogPosts\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"sitePages\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  },\n  \"redirects\": {\n    \"count\": \"<integer>\",\n    \"start\": 0,\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filters\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"sorting\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnFilters\": \"<boolean>\",\n    \"excludeSiblingFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"returnInitialContent\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbbfa868-e9b7-4d02-99cf-3511d4707791",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": 1782,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"categories\": {\n    \"count\": 9768,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"brands\": {\n    \"count\": 7563,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"blogPosts\": {\n    \"count\": 6358,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"sitePages\": {\n    \"count\": 3358,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"redirects\": {\n    \"count\": 2380,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"query\": \"string\",\n  \"products\": {\n    \"start\": 438,\n    \"requestedCount\": 633,\n    \"returnedCount\": 9812,\n    \"totalCount\": 3409,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"categories\": {\n    \"start\": 3617,\n    \"requestedCount\": 9840,\n    \"returnedCount\": 1331,\n    \"totalCount\": 7489,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"brands\": {\n    \"start\": 5916,\n    \"requestedCount\": 5794,\n    \"returnedCount\": 4941,\n    \"totalCount\": 5521,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"blogPosts\": {\n    \"start\": 2358,\n    \"requestedCount\": 5875,\n    \"returnedCount\": 69,\n    \"totalCount\": 7475,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"sitePages\": {\n    \"start\": 1227,\n    \"requestedCount\": 6292,\n    \"returnedCount\": 2060,\n    \"totalCount\": 1272,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"redirects\": {\n    \"start\": 5406,\n    \"requestedCount\": 9772,\n    \"returnedCount\": 9514,\n    \"totalCount\": 1613,\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"suggestedProductStatus\": \"string\"\n  },\n  \"html\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6ee8a37-88c8-4ae2-8b0f-9eab47312804",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": 1782,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"categories\": {\n    \"count\": 9768,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"brands\": {\n    \"count\": 7563,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"blogPosts\": {\n    \"count\": 6358,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"sitePages\": {\n    \"count\": 3358,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"redirects\": {\n    \"count\": 2380,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3047a039-9049-466e-ab3a-33d1fad54213",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serve",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"key\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"trackingUserId\": \"<string>\",\n  \"format\": \"json\",\n  \"deviceType\": \"<string>\",\n  \"includeRetailMediaInReview\": \"<boolean>\",\n  \"products\": {\n    \"count\": 1782,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"categories\": {\n    \"count\": 9768,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"brands\": {\n    \"count\": 7563,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"blogPosts\": {\n    \"count\": 6358,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  },\n  \"sitePages\": {\n    \"count\": 3358,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": false,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": true\n  },\n  \"redirects\": {\n    \"count\": 2380,\n    \"start\": 0,\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sorting\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnFilters\": true,\n    \"excludeSiblingFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"returnInitialContent\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://core.helloretail.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "57448fba-4c9b-47ed-bddf-bc25705fa0be",
+    "name": "Hello Retail Customer Bias Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hello Retail provides REST APIs for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. Endpoints are served from the core.helloretail.com host and accept JSON request bodies. Most endpoints expect a Bearer token issued from the My Hello Retail dashboard. The API powers e-commerce personalization use cases including product discovery, behavioral tracking, and merchandising.\n\nContact Support:\n Name: Hello Retail",
+      "type": "text/plain"
+    }
+  }
+}

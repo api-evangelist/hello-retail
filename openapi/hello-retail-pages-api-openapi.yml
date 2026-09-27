@@ -53,33 +53,6 @@ paths:
           description: Page not found
 components:
   schemas:
-    Product:
-      type: object
-      properties:
-        title:
-          type: string
-        productNumber:
-          type: string
-        imgUrl:
-          type: string
-          format: uri
-        price:
-          type: number
-        inStock:
-          type: boolean
-        extraData:
-          type: object
-          additionalProperties: true
-        extraDataNumber:
-          type: object
-          additionalProperties:
-            type: number
-        extraDataList:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
     PageRequest:
       type: object
       required:
@@ -157,6 +130,33 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Product'
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        productNumber:
+          type: string
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
+          type: object
+          additionalProperties: true
+        extraDataNumber:
+          type: object
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http

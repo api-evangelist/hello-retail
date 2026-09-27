@@ -44,33 +44,24 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    Product:
+    ProductSource:
       type: object
+      required:
+      - type
       properties:
-        title:
+        type:
           type: string
-        productNumber:
-          type: string
-        imgUrl:
-          type: string
-          format: uri
-        price:
-          type: number
-        inStock:
-          type: boolean
-        extraData:
+          enum:
+          - TOP
+          - MOST_BOUGHT
+          - MOST_VIEWED
+          - ALTERNATIVES
+          - BOUGHT_TOGETHER
+          - RETARGETED
+          - RECENTLY_BOUGHT
+        context:
           type: object
           additionalProperties: true
-        extraDataNumber:
-          type: object
-          additionalProperties:
-            type: number
-        extraDataList:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
     RecomResponse:
       type: object
       properties:
@@ -121,6 +112,32 @@ components:
             oneOf:
             - $ref: '#/components/schemas/ManagedRecomRequest'
             - $ref: '#/components/schemas/UnmanagedRecomRequest'
+    ManagedRecomRequest:
+      type: object
+      required:
+      - key
+      - format
+      properties:
+        key:
+          type: string
+          description: Recom box identifier configured in My Hello Retail.
+        format:
+          type: string
+          enum:
+          - html
+          - json
+        fields:
+          type: array
+          items:
+            type: string
+        context:
+          type: object
+          additionalProperties: true
+        deviceType:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
     UnmanagedRecomRequest:
       type: object
       required:
@@ -148,50 +165,33 @@ components:
         context:
           type: object
           additionalProperties: true
-    ManagedRecomRequest:
+    Product:
       type: object
-      required:
-      - key
-      - format
       properties:
-        key:
+        title:
           type: string
-          description: Recom box identifier configured in My Hello Retail.
-        format:
+        productNumber:
           type: string
-          enum:
-          - html
-          - json
-        fields:
-          type: array
-          items:
-            type: string
-        context:
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
           type: object
           additionalProperties: true
-        deviceType:
-          type: string
-          enum:
-          - DESKTOP
-          - MOBILE
-    ProductSource:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - TOP
-          - MOST_BOUGHT
-          - MOST_VIEWED
-          - ALTERNATIVES
-          - BOUGHT_TOGETHER
-          - RETARGETED
-          - RECENTLY_BOUGHT
-        context:
+        extraDataNumber:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http

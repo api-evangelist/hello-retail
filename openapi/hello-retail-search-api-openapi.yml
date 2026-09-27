@@ -44,66 +44,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    SearchResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        query:
-          type: string
-        products:
-          $ref: '#/components/schemas/ContentTypeResult'
-        categories:
-          $ref: '#/components/schemas/ContentTypeResult'
-        brands:
-          $ref: '#/components/schemas/ContentTypeResult'
-        blogPosts:
-          $ref: '#/components/schemas/ContentTypeResult'
-        sitePages:
-          $ref: '#/components/schemas/ContentTypeResult'
-        redirects:
-          $ref: '#/components/schemas/ContentTypeResult'
-        html:
-          type: string
-    SearchRequest:
-      type: object
-      required:
-      - query
-      - key
-      properties:
-        query:
-          type: string
-        key:
-          type: string
-        id:
-          type: integer
-        trackingUserId:
-          type: string
-        format:
-          type: string
-          enum:
-          - json
-          - html
-          default: json
-        deviceType:
-          type: string
-          enum:
-          - DESKTOP
-          - MOBILE
-        includeRetailMediaInReview:
-          type: boolean
-        products:
-          $ref: '#/components/schemas/ContentTypeQuery'
-        categories:
-          $ref: '#/components/schemas/ContentTypeQuery'
-        brands:
-          $ref: '#/components/schemas/ContentTypeQuery'
-        blogPosts:
-          $ref: '#/components/schemas/ContentTypeQuery'
-        sitePages:
-          $ref: '#/components/schemas/ContentTypeQuery'
-        redirects:
-          $ref: '#/components/schemas/ContentTypeQuery'
     ContentTypeQuery:
       type: object
       required:
@@ -158,6 +98,66 @@ components:
           items:
             type: string
         suggestedProductStatus:
+          type: string
+    SearchRequest:
+      type: object
+      required:
+      - query
+      - key
+      properties:
+        query:
+          type: string
+        key:
+          type: string
+        id:
+          type: integer
+        trackingUserId:
+          type: string
+        format:
+          type: string
+          enum:
+          - json
+          - html
+          default: json
+        deviceType:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
+        includeRetailMediaInReview:
+          type: boolean
+        products:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        categories:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        brands:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeQuery'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeQuery'
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        query:
+          type: string
+        products:
+          $ref: '#/components/schemas/ContentTypeResult'
+        categories:
+          $ref: '#/components/schemas/ContentTypeResult'
+        brands:
+          $ref: '#/components/schemas/ContentTypeResult'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeResult'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeResult'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeResult'
+        html:
           type: string
   securitySchemes:
     bearerAuth:

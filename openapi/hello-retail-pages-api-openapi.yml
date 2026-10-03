@@ -53,6 +53,28 @@ paths:
           description: Page not found
 components:
   schemas:
+    PageResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        firstLoad:
+          type: boolean
+        products:
+          type: object
+          properties:
+            start:
+              type: integer
+            count:
+              type: integer
+            total:
+              type: integer
+            html:
+              type: string
+            result:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
     PageRequest:
       type: object
       required:
@@ -108,28 +130,6 @@ components:
               type: array
               items:
                 type: string
-    PageResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        firstLoad:
-          type: boolean
-        products:
-          type: object
-          properties:
-            start:
-              type: integer
-            count:
-              type: integer
-            total:
-              type: integer
-            html:
-              type: string
-            result:
-              type: array
-              items:
-                $ref: '#/components/schemas/Product'
     Product:
       type: object
       properties:

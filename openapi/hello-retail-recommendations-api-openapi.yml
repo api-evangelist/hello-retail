@@ -44,24 +44,33 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    ProductSource:
+    Product:
       type: object
-      required:
-      - type
       properties:
-        type:
+        title:
           type: string
-          enum:
-          - TOP
-          - MOST_BOUGHT
-          - MOST_VIEWED
-          - ALTERNATIVES
-          - BOUGHT_TOGETHER
-          - RETARGETED
-          - RECENTLY_BOUGHT
-        context:
+        productNumber:
+          type: string
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
           type: object
           additionalProperties: true
+        extraDataNumber:
+          type: object
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
     RecomResponse:
       type: object
       properties:
@@ -112,6 +121,24 @@ components:
             oneOf:
             - $ref: '#/components/schemas/ManagedRecomRequest'
             - $ref: '#/components/schemas/UnmanagedRecomRequest'
+    ProductSource:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - TOP
+          - MOST_BOUGHT
+          - MOST_VIEWED
+          - ALTERNATIVES
+          - BOUGHT_TOGETHER
+          - RETARGETED
+          - RECENTLY_BOUGHT
+        context:
+          type: object
+          additionalProperties: true
     ManagedRecomRequest:
       type: object
       required:
@@ -165,33 +192,6 @@ components:
         context:
           type: object
           additionalProperties: true
-    Product:
-      type: object
-      properties:
-        title:
-          type: string
-        productNumber:
-          type: string
-        imgUrl:
-          type: string
-          format: uri
-        price:
-          type: number
-        inStock:
-          type: boolean
-        extraData:
-          type: object
-          additionalProperties: true
-        extraDataNumber:
-          type: object
-          additionalProperties:
-            type: number
-        extraDataList:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
   securitySchemes:
     bearerAuth:
       type: http

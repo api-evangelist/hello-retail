@@ -44,59 +44,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    Product:
-      type: object
-      properties:
-        title:
-          type: string
-        productNumber:
-          type: string
-        imgUrl:
-          type: string
-          format: uri
-        price:
-          type: number
-        inStock:
-          type: boolean
-        extraData:
-          type: object
-          additionalProperties: true
-        extraDataNumber:
-          type: object
-          additionalProperties:
-            type: number
-        extraDataList:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-    RecomResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        responses:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-              trackingKey:
-                type: string
-              success:
-                type: boolean
-              products:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Product'
-              html:
-                type: string
-              code:
-                type: string
-              message:
-                type: string
     RecomRequest:
       type: object
       required:
@@ -165,6 +112,59 @@ components:
           enum:
           - DESKTOP
           - MOBILE
+    RecomResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              trackingKey:
+                type: string
+              success:
+                type: boolean
+              products:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              html:
+                type: string
+              code:
+                type: string
+              message:
+                type: string
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        productNumber:
+          type: string
+        imgUrl:
+          type: string
+          format: uri
+        price:
+          type: number
+        inStock:
+          type: boolean
+        extraData:
+          type: object
+          additionalProperties: true
+        extraDataNumber:
+          type: object
+          additionalProperties:
+            type: number
+        extraDataList:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
     UnmanagedRecomRequest:
       type: object
       required:

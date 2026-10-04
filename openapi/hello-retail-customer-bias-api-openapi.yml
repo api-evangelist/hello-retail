@@ -44,6 +44,22 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    CustomerBiasResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        bias:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                value:
+                  type: string
+                weight:
+                  type: number
     CustomerBiasRequest:
       type: object
       required:
@@ -67,22 +83,6 @@ components:
           type: integer
           maximum: 10
           default: 5
-    CustomerBiasResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        bias:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                value:
-                  type: string
-                weight:
-                  type: number
   securitySchemes:
     bearerAuth:
       type: http

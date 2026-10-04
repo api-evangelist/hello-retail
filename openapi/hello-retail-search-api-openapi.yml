@@ -44,6 +44,36 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ContentTypeQuery:
+      type: object
+      required:
+      - count
+      properties:
+        start:
+          type: integer
+          default: 0
+        count:
+          type: integer
+        fields:
+          type: array
+          items:
+            type: string
+        filters:
+          type: array
+          items:
+            type: object
+        sorting:
+          type: array
+          items:
+            type: string
+        returnFilters:
+          type: boolean
+        excludeSiblingFilters:
+          type: array
+          items:
+            type: string
+        returnInitialContent:
+          type: boolean
     ContentTypeResult:
       type: object
       properties:
@@ -90,36 +120,6 @@ components:
           $ref: '#/components/schemas/ContentTypeResult'
         html:
           type: string
-    ContentTypeQuery:
-      type: object
-      required:
-      - count
-      properties:
-        start:
-          type: integer
-          default: 0
-        count:
-          type: integer
-        fields:
-          type: array
-          items:
-            type: string
-        filters:
-          type: array
-          items:
-            type: object
-        sorting:
-          type: array
-          items:
-            type: string
-        returnFilters:
-          type: boolean
-        excludeSiblingFilters:
-          type: array
-          items:
-            type: string
-        returnInitialContent:
-          type: boolean
     SearchRequest:
       type: object
       required:

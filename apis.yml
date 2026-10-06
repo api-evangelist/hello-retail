@@ -43,7 +43,7 @@ tags:
   - Retail
 url: https://raw.githubusercontent.com/api-evangelist/hello-retail/refs/heads/main/apis.yml
 created: '2025-02-06'
-modified: '2026-05-19'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: hello-retail:hello-retail-customer-bias-api
@@ -111,6 +111,8 @@ apis:
   - type: Authentication
     url: https://developer.helloretail.com/authentication/
 common:
+  - url: https://helloretail.com/en/blog/
+    type: Blog
   - type: AgenticAccess
     url: agentic-access/hello-retail-agentic-access.yml
   - type: DomainSecurity

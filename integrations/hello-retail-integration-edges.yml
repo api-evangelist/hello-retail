@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/hello-retail/integrations
+- https://n8n.io/integrations/hello-retail/
+- https://composio.dev/toolkits/hello-retail
+- https://monid.ai/tools/hello-retail
+checked:
+- https://composio.dev/toolkits/hello-retail
+- https://monid.ai/tools/hello-retail
+- https://n8n.io/integrations/hello-retail/
+- https://zapier.com/apps/hello-retail/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

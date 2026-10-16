@@ -29,7 +29,7 @@ edges:
     registered_name: com.helloretail/hello-retail
     register_id: com.helloretail/hello-retail
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-14'
+    detected: '2026-10-15'
   mcp_registry:
     servers:
     - com.helloretail/hello-retail

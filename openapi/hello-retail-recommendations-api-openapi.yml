@@ -44,74 +44,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    RecomRequest:
-      type: object
-      required:
-      - requests
-      properties:
-        websiteUuid:
-          type: string
-          description: Identifies the website in Hello Retail.
-        trackingUserId:
-          type: string
-          description: Hello Retail-generated tracking user ID.
-        email:
-          type: string
-          format: email
-        customerId:
-          type: string
-        includeRetailMediaInReview:
-          type: boolean
-        requests:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/ManagedRecomRequest'
-            - $ref: '#/components/schemas/UnmanagedRecomRequest'
-    ProductSource:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - TOP
-          - MOST_BOUGHT
-          - MOST_VIEWED
-          - ALTERNATIVES
-          - BOUGHT_TOGETHER
-          - RETARGETED
-          - RECENTLY_BOUGHT
-        context:
-          type: object
-          additionalProperties: true
-    ManagedRecomRequest:
-      type: object
-      required:
-      - key
-      - format
-      properties:
-        key:
-          type: string
-          description: Recom box identifier configured in My Hello Retail.
-        format:
-          type: string
-          enum:
-          - html
-          - json
-        fields:
-          type: array
-          items:
-            type: string
-        context:
-          type: object
-          additionalProperties: true
-        deviceType:
-          type: string
-          enum:
-          - DESKTOP
-          - MOBILE
     RecomResponse:
       type: object
       properties:
@@ -165,6 +97,32 @@ components:
             type: array
             items:
               type: string
+    ManagedRecomRequest:
+      type: object
+      required:
+      - key
+      - format
+      properties:
+        key:
+          type: string
+          description: Recom box identifier configured in My Hello Retail.
+        format:
+          type: string
+          enum:
+          - html
+          - json
+        fields:
+          type: array
+          items:
+            type: string
+        context:
+          type: object
+          additionalProperties: true
+        deviceType:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
     UnmanagedRecomRequest:
       type: object
       required:
@@ -189,6 +147,48 @@ components:
         hideAdditionalVariants:
           type: boolean
           default: true
+        context:
+          type: object
+          additionalProperties: true
+    RecomRequest:
+      type: object
+      required:
+      - requests
+      properties:
+        websiteUuid:
+          type: string
+          description: Identifies the website in Hello Retail.
+        trackingUserId:
+          type: string
+          description: Hello Retail-generated tracking user ID.
+        email:
+          type: string
+          format: email
+        customerId:
+          type: string
+        includeRetailMediaInReview:
+          type: boolean
+        requests:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/ManagedRecomRequest'
+            - $ref: '#/components/schemas/UnmanagedRecomRequest'
+    ProductSource:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - TOP
+          - MOST_BOUGHT
+          - MOST_VIEWED
+          - ALTERNATIVES
+          - BOUGHT_TOGETHER
+          - RETARGETED
+          - RECENTLY_BOUGHT
         context:
           type: object
           additionalProperties: true

@@ -44,6 +44,27 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        query:
+          type: string
+        products:
+          $ref: '#/components/schemas/ContentTypeResult'
+        categories:
+          $ref: '#/components/schemas/ContentTypeResult'
+        brands:
+          $ref: '#/components/schemas/ContentTypeResult'
+        blogPosts:
+          $ref: '#/components/schemas/ContentTypeResult'
+        sitePages:
+          $ref: '#/components/schemas/ContentTypeResult'
+        redirects:
+          $ref: '#/components/schemas/ContentTypeResult'
+        html:
+          type: string
     ContentTypeQuery:
       type: object
       required:
@@ -74,52 +95,6 @@ components:
             type: string
         returnInitialContent:
           type: boolean
-    ContentTypeResult:
-      type: object
-      properties:
-        start:
-          type: integer
-        requestedCount:
-          type: integer
-        returnedCount:
-          type: integer
-        totalCount:
-          type: integer
-        results:
-          type: array
-          items:
-            type: object
-        filters:
-          type: array
-          items:
-            type: object
-        sorting:
-          type: array
-          items:
-            type: string
-        suggestedProductStatus:
-          type: string
-    SearchResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        query:
-          type: string
-        products:
-          $ref: '#/components/schemas/ContentTypeResult'
-        categories:
-          $ref: '#/components/schemas/ContentTypeResult'
-        brands:
-          $ref: '#/components/schemas/ContentTypeResult'
-        blogPosts:
-          $ref: '#/components/schemas/ContentTypeResult'
-        sitePages:
-          $ref: '#/components/schemas/ContentTypeResult'
-        redirects:
-          $ref: '#/components/schemas/ContentTypeResult'
-        html:
-          type: string
     SearchRequest:
       type: object
       required:
@@ -159,6 +134,31 @@ components:
           $ref: '#/components/schemas/ContentTypeQuery'
         redirects:
           $ref: '#/components/schemas/ContentTypeQuery'
+    ContentTypeResult:
+      type: object
+      properties:
+        start:
+          type: integer
+        requestedCount:
+          type: integer
+        returnedCount:
+          type: integer
+        totalCount:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+        filters:
+          type: array
+          items:
+            type: object
+        sorting:
+          type: array
+          items:
+            type: string
+        suggestedProductStatus:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

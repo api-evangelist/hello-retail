@@ -1,4 +1,4 @@
-# Hello Retail (hello-retail)
+# Hello Retail
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,57 +66,128 @@
 
 Hello Retail is a personalization and product recommendation platform for e-commerce. It provides a REST API and JavaScript SDK for integrating personalized product recommendations, search, and behavioral tracking into retail websites.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hello-retail/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hello-retail/refs/heads/main/apis.yml)
+**Areas:** E-Commerce · Personalization · Product Recommendations · Retail
 
-## Scope
+## Hello Retail on APIs.io
 
-- **Type:** Index
+Everything profiled for Hello Retail is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hello-retail/](https://apis.io/providers/hello-retail/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- E-Commerce
-- Personalization
-- Product Recommendations
-- Retail
+- [Hello Retail Customer Bias API](https://apis.io/apis/hello-retail/hello-retail-customer-bias-api/) — Retrieve weighted customer preference data for personalization.
+- [Hello Retail Pages API](https://apis.io/apis/hello-retail/hello-retail-pages-api/) — Page-driven product listings with filtering and sorting.
+- [Hello Retail Recommendations API](https://apis.io/apis/hello-retail/hello-retail-recommendations-api/) — Managed and unmanaged product recommendation requests.
+- [Hello Retail Search API](https://apis.io/apis/hello-retail/hello-retail-search-api/) — On-site search across products, categories, brands, and content.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-06
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Hello Retail API
+Model Context Protocol servers that expose the API to agents.
 
-Hello Retail provides a REST API for personalized product recommendations, on-site search, page-driven product listings, and customer bias retrieval. The helloretail.js script wraps the API as an easy-to-use JavaScript SDK for use directly on retail websites.
+- [hello-retail](https://apis.io/servers/hello-retail/hello-retail/)
 
-- **Human URL:** [https://developer.helloretail.com/sdk/](https://developer.helloretail.com/sdk/)
-- **Base URL:** `https://core.helloretail.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- E-Commerce
-- Personalization
-- REST
+- [Hello Retail Agentic Access](https://apis.io/agentic-access/hello-retail/hello-retail-agentic-access/)
 
-#### Properties
+#### Collections (5)
 
-- [Documentation](https://developer.helloretail.com/sdk/)
-- [Getting Started](https://developer.helloretail.com/getting-started/)
-- [Authentication](https://developer.helloretail.com/authentication/)
-- [OpenAPI](openapi/hello-retail-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hello-retail.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hello-retail.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-## Common Properties
+- [Hello Retail API](https://apis.io/collections/hello-retail/open-hello-retail/)
+- [Hello Retail Customer Bias API](https://apis.io/collections/hello-retail/open-hello-retail-customer-bias-api/)
+- [Hello Retail Customer Bias Pages API](https://apis.io/collections/hello-retail/open-hello-retail-pages-api/)
+- [Hello Retail Customer Bias Recommendations API](https://apis.io/collections/hello-retail/open-hello-retail-recommendations-api/)
+- [Hello Retail Customer Bias Search API](https://apis.io/collections/hello-retail/open-hello-retail-search-api/)
 
-- [LinkedIn](https://www.linkedin.com/company/helloretail)
-- [Portal](https://developer.helloretail.com/)
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Hello Retail Authentication](https://apis.io/security/hello-retail/hello-retail-authentication/)
+- [Hello Retail Domain Security](https://apis.io/security/hello-retail/hello-retail-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Hello Retail Plans Pricing](https://apis.io/plans/hello-retail/hello-retail-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Hello Retail Rate Limits](https://apis.io/rate-limits/hello-retail/hello-retail-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Hello Retail Finops](https://apis.io/finops/hello-retail/hello-retail-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.helloretail.com/)
-- [Sign Up](https://app.helloretail.com/signup)
-- [L L Ms Txt](https://helloretail.com/llms.txt)
+- [Blog](https://helloretail.com/en/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.0** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.7 |
+| Contract quality | 51.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 21.1 |
+
+**Agent readiness 38.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hello-retail/](https://apis.io/providers/hello-retail/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Hello Retail: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hello-retail/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
